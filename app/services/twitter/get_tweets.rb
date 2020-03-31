@@ -16,9 +16,19 @@ module Twitter
     end
 
     def search
-      client.search('coronavirus', result_type: 'recent').take(3).each do |tweet|
-        puts tweet.text
+      tweets = client.search('coronavirus', result_type: 'recent',
+                                            geocode: location_coordinates,
+                                            lang: 'pt').take(200)
+                     .select { !_1.retweeted_tweet? }
+
+      tweets.each do |tweet|
+        puts tweet.inspect
       end
+    end
+
+    def location_coordinates
+      coordinates = Geocoder.search('Teresina').first.coordinates
+      "#{coordinates.join(',')},30mi"
     end
   end
 end
