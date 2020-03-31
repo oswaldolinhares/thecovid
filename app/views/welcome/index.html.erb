@@ -1,9 +1,14 @@
-<%= @tweets.each do %>
-  <%= _1.user.name %>
- @ <%=_1.user.screen_name %>
+<% @tweets.each do %>
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">@<%=_1.user.screen_name %></div>
+        <p class="text-gray-700 text-base">
+          <%= image_tag _1.user.profile_image_uri.to_s %>
 
-  <%= _1.text %>
-  <br>
-  <%= _1.created_at %>
-    <br><br>
+          <%= _1.text %>
+          <br>
+          <%= _1.created_at %>
+        </p>
+    </div>
+  </div>
 <% end %>

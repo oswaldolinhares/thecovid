@@ -18,12 +18,8 @@ module Twitter
     def search
       tweets = client.search('coronavirus', result_type: 'recent',
                                             geocode: location_coordinates,
-                                            lang: 'pt').take(200)
+                                            lang: 'pt').take(20)
                      .select { !_1.retweeted_tweet? }
-
-      tweets.each do |tweet|
-        puts tweet.inspect
-      end
     end
 
     def location_coordinates
