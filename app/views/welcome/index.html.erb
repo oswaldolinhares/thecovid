@@ -1,2 +1,9 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<%= @tweets.each do %>
+  <%= _1.user.name %>
+ @ <%=_1.user.screen_name %>
+
+  <%= _1.text %>
+  <br>
+  <%= _1.created_at %>
+    <br><br>
+<% end %>
