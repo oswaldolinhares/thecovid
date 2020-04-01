@@ -23,8 +23,7 @@ module Twitter
     end
 
     def location_coordinates
-      coordinates = Geocoder.search('Teresina').first.coordinates
-      "#{coordinates.join(',')},30mi"
+      City.find_by_name("Teresina").coordinates
     end
   end
 end
